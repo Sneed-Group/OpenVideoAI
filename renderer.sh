@@ -1,3 +1,18 @@
+# Specify the directory containing your images
+image_directory="img/"
+
+# Iterate over each image in the directory
+for image in "$image_directory"/*; do
+    # Use identify to get the width of the image
+    width=$(identify -format "%w" "$image")
+
+    # Check if the width is not divisible by 2
+    if [ $((width % 2)) -ne 0 ]; then
+        echo "Deleting $image (width: $width)"
+        rm "$image"
+    fi
+done
+
 total_frames=$(wc -l < concat.txt)  # Count the total number of frames in concat.txt
 voice_length=$(ffprobe -i voice.wav -show_entries format=duration -v quiet -of csv="p=0")  # Get the length of voice.wav
 
