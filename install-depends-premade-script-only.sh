@@ -1,1 +1,1 @@
-sudo apt install imagemagick curl wget ffmpeg bc
+sudo apt install imagemagick curl wget ffmpeg bc espeak
