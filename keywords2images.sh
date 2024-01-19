@@ -17,19 +17,9 @@ ls -1v img/* | while IFS= read -r file; do
 done > concat.txt
 sed -i '/\\/d' concat.txt 
 
-# Resize images in img folder to multiple of 2.
-
+# Resize images in img folder to 4k.
 for image in img/*; do
-    # Use identify to get the width and height of the image
-    width=$(identify -format "%w" "$image")
-    height=$(identify -format "%h" "$image")
-
-    # Calculate the nearest multiple of 2 for width and height
-    new_width=$((width + (2 - (width % 2)) % 2))
-    new_height=$((height + (2 - (height % 2)) % 2))
-
-    # Resize the image to the nearest multiple of 2
-    convert "$image" -resize "${new_width}x${new_height}" "$image"
-
-    echo "Resized $image to ${new_width}x${new_height}"
+    # Resize the image to 4k.
+    convert "$image" -resize "3840x2160" "$image"
+    echo "Resized $image to 3840x2160"
 done
