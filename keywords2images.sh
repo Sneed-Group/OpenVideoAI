@@ -17,9 +17,7 @@ ls -1v img/* | while IFS= read -r file; do
 done > concat.txt
 sed -i '/\\/d' concat.txt 
 
+cd img
 # Resize images in img folder to 4k.
-for image in img/*; do
-    # Resize the image to 4k.
-    convert "$image" -resize "3840x2160" "$image"
-    echo "Resized $image to 3840x2160"
-done
+magick * -resize "3840x2160" *
+cd ..
