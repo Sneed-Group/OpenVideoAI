@@ -7,5 +7,5 @@ duration=$(echo "$voice_length / $total_frames" | bc)
 fps=$(echo "scale=2; $total_frames / $voice_length" | bc)
 
 # Use the corrected duration in the FFmpeg command
-ffmpeg -r $fps -f concat -safe 0 -i concat.txt -i voice.wav -c:v libx264 -c:a aac -vf "setpts=PTS/1" -pix_fmt yuv420p -shortest mv output_video.mp4 ~/yt-drive/"$1.mp4"
+ffmpeg -r $fps -f concat -safe 0 -i concat.txt -i voice.wav -c:v libx264 -c:a aac -vf "setpts=PTS/1" -pix_fmt yuv420p -shortest ~/yt-drive/"$1.mp4"
 
