@@ -3,3 +3,4 @@ TITLE=$(ollama run "sparksammy/samantha-v3-uncensored" "create exactly 1 topic f
 ./keywords2images.sh
 espeak -f script.txt -w voice.wav
 ./renderer_personal.sh "$TITLE"
+./renamer_personal.sh
